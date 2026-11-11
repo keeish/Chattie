@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1067602740716",
+    "firebase_url": "https://chatconnect-95126-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "chatconnect-95126",
+    "storage_bucket": "chatconnect-95126.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067602740716:android:ff26b160435d3a2e87ecc9",
+        "android_client_info": {
+          "package_name": "com.chatconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1067602740716-og4g3acjb661l8u1apmul6rpveopgtpo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3gPHuZqOQWR654wL0acPE-hnj0pfOc-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067602740716-og4g3acjb661l8u1apmul6rpveopgtpo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

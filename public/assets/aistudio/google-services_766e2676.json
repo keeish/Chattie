@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "323750725817",
+    "firebase_url": "https://gen-lang-client-0421408721-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "gen-lang-client-0421408721",
+    "storage_bucket": "gen-lang-client-0421408721.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323750725817:android:593699b2c5d6420514f368",
+        "android_client_info": {
+          "package_name": "com.chattie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323750725817-9q4k308ras1pls9jej7fs7cvaq35n9vp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxDJaAwBq_WVWeSrhiNXMM9S1rQqLtuaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323750725817-9q4k308ras1pls9jej7fs7cvaq35n9vp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

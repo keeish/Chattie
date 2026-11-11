@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix ChatConnect",
+  "description": "Telegram-inspired real-time messaging application with groups, contacts, calls, and instant sync.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

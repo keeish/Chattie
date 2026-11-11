@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // --- 1. USER PROFILES ---
+    match /users/{userId} {
+      allow read, write: if true;
+
+      // --- 2. USER CONTACTS (Private Subcollection) ---
+      match /contacts/{contactId} {
+        allow read, write: if true;
+      }
+    }
+
+    // --- 3. SIX-DIGIT ID DIRECTORY ---
+    match /accountIds/{sixDigitId} {
+      allow read, write: if true;
+    }
+
+    // --- 4. USERNAME UNIQUENESS DIRECTORY ---
+    match /usernames/{username} {
+      allow read, write: if true;
+    }
+
+    // --- 5. CONVERSATIONS & GROUP CHATS ---
+    match /conversations/{conversationId} {
+      allow read, write: if true;
+
+      // --- 6. MESSAGES (Subcollection) ---
+      match /messages/{messageId} {
+        allow read, write: if true;
+      }
+    }
+
+    // --- 7. AUDIO & VIDEO CALL SIGNALING ---
+    match /calls/{callId} {
+      allow read, write: if true;
+    }
+  }
+}

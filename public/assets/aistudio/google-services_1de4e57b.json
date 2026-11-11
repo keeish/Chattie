@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "757713727711",
+    "firebase_url": "https://keeish-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "keeish",
+    "storage_bucket": "keeish.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757713727711:android:63d763980a27b9e8dd396a",
+        "android_client_info": {
+          "package_name": "com.chatconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5tqVc1TYNqW1rAWQhS7Wg0LzseqCzPVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

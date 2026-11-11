@@ -1,0 +1,154 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile with unique six-digit account ID, username, and settings",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "sixDigitId": { "type": "string" },
+        "username": { "type": "string" },
+        "displayName": { "type": "string" },
+        "about": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "passwordHash": { "type": "string" },
+        "online": { "type": "boolean" },
+        "lastSeen": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "sixDigitId", "username", "displayName", "createdAt"]
+    },
+    "AccountId": {
+      "title": "Account ID Index",
+      "description": "Unique six-digit ChatConnect ID mapping to user",
+      "type": "object",
+      "properties": {
+        "sixDigitId": { "type": "string" },
+        "userId": { "type": "string" },
+        "username": { "type": "string" },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["sixDigitId", "userId", "username", "displayName", "createdAt"]
+    },
+    "UsernameIndex": {
+      "title": "Username Index",
+      "description": "Unique username registry to prevent duplicates",
+      "type": "object",
+      "properties": {
+        "username": { "type": "string" },
+        "userId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["username", "userId", "createdAt"]
+    },
+    "Contact": {
+      "title": "User Contact",
+      "description": "Saved contact entry for direct messaging and group invites",
+      "type": "object",
+      "properties": {
+        "contactId": { "type": "string" },
+        "userId": { "type": "string" },
+        "contactUserId": { "type": "string" },
+        "sixDigitId": { "type": "string" },
+        "displayName": { "type": "string" },
+        "username": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "addedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["contactId", "userId", "contactUserId", "sixDigitId", "displayName", "username", "addedAt"]
+    },
+    "Conversation": {
+      "title": "Chat Conversation",
+      "description": "Direct 1-on-1 chat or group channel",
+      "type": "object",
+      "properties": {
+        "conversationId": { "type": "string" },
+        "isGroup": { "type": "boolean" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "creatorId": { "type": "string" },
+        "adminIds": { "type": "array" },
+        "participantIds": { "type": "array" },
+        "lastMessage": { "type": "string" },
+        "lastSenderName": { "type": "string" },
+        "lastMessageTime": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["conversationId", "isGroup", "creatorId", "participantIds", "createdAt"]
+    },
+    "Message": {
+      "title": "Chat Message",
+      "description": "Individual message in direct or group conversation",
+      "type": "object",
+      "properties": {
+        "messageId": { "type": "string" },
+        "conversationId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderSixDigitId": { "type": "string" },
+        "content": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "replyToId": { "type": "string" },
+        "replyToText": { "type": "string" },
+        "replyToSender": { "type": "string" },
+        "readBy": { "type": "array" },
+        "deleted": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["messageId", "conversationId", "senderId", "senderName", "content", "createdAt"]
+    },
+    "Call": {
+      "title": "Call Signaling",
+      "description": "Audio or video call signaling session",
+      "type": "object",
+      "properties": {
+        "callId": { "type": "string" },
+        "callerId": { "type": "string" },
+        "callerName": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "receiverName": { "type": "string" },
+        "callType": { "type": "string", "enum": ["audio", "video"] },
+        "status": { "type": "string", "enum": ["calling", "ringing", "connected", "ended", "rejected"] },
+        "offer": { "type": "string" },
+        "answer": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["callId", "callerId", "callerName", "receiverId", "receiverName", "callType", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile with 6-digit ID and private settings"
+    },
+    "/accountIds/{sixDigitId}": {
+      "schema": "AccountId",
+      "description": "Public searchable index of assigned six-digit IDs"
+    },
+    "/usernames/{username}": {
+      "schema": "UsernameIndex",
+      "description": "Public registry of usernames to ensure uniqueness"
+    },
+    "/users/{userId}/contacts/{contactId}": {
+      "schema": "Contact",
+      "description": "Contacts saved by a specific user"
+    },
+    "/conversations/{conversationId}": {
+      "schema": "Conversation",
+      "description": "Direct and group conversation channels"
+    },
+    "/conversations/{conversationId}/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Real-time messages in a conversation"
+    },
+    "/calls/{callId}": {
+      "schema": "Call",
+      "description": "WebRTC audio/video call signaling"
+    }
+  }
+}
